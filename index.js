@@ -14,17 +14,17 @@ let notes = [
     },  
     {
         id: 2,    
-        name: "Elma Tuohimetsä",    
-        number: "0504110153",    
+        name: "Ellu Kananen",    
+        number: "0443574625",    
     },  
     {
         id: 3,    
-        name: "Niilo Ojala",    
-        number: "0505339531",    
+        name: "Jaska Jokunen",    
+        number: "050434575",    
     },
     {
         id: 4,    
-        name: "Joku Random",    
+        name: "Maija Mehiläinen",    
         number: "044 6574432",    
     }
 ]
@@ -88,7 +88,7 @@ app.delete('/api/persons/:id', (request, response) => {
     response.json(note)
   })
       
-  const PORT = process.env.PORT || 3001
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
-  })
+const PORT = 3001
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
