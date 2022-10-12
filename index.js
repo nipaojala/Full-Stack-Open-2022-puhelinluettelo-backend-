@@ -33,6 +33,13 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :p
 morgan.token('param', function(req, res) {
     return JSON.stringify(req.body);
 });
+
+
+
+app.get('/', (req, res) => {
+  return res.redirect('/api/persons')
+})
+
 app.get('/api/persons', (req, res) => {
     res.json(notes)
 })
@@ -88,7 +95,7 @@ app.delete('/api/persons/:id', (request, response) => {
     response.json(note)
   })
       
-const PORT = 3001
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+  const PORT = process.env.PORT || 3001
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+  })
