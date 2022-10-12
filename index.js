@@ -5,7 +5,7 @@ app.use(express.json())
 const morgan = require('morgan')
 const cors = require('cors')
 app.use(cors())
-
+app.use(express.static('build'))
 let notes = [
     {
         id: 1,    
@@ -33,8 +33,6 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :p
 morgan.token('param', function(req, res) {
     return JSON.stringify(req.body);
 });
-
-
 
 app.get('/', (req, res) => {
   return res.redirect('/api/persons')
