@@ -70,9 +70,6 @@ app.delete('/api/persons/:id', (request, response, next) => {
   app.post('/api/persons', (request, response, next) => {
     const body = request.body
 
-    if (body.name === undefined || body.number === undefined) {
-      return response.status(400).json({ error: 'content missing' })
-    }
     const person = new Person({
       name: body.name,
       number: body.number,
@@ -109,7 +106,6 @@ app.delete('/api/persons/:id', (request, response, next) => {
       if (error.name === 'CastError') {
         return response.status(400).send({ error: 'malformatted id' })
       } else if (error.name === 'ValidationError') {
-        console.log(error.name)
         return response.status(400).json({ error: error.message })
       }
 
