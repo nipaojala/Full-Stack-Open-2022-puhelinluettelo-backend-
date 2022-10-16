@@ -1,11 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 const personRouter = require('express').Router()
-const Person = require('./models/person')
-
-personRouter.get('/', (_req, res) => {
-  return res.redirect('/api/persons')
-})
+const Person = require('../models/person')
 
 personRouter.get('/', (_req, res) => {
   Person.find({}).then(persons => {
@@ -64,11 +60,6 @@ personRouter.put('/:id', (request, response, next) => {
       response.json(updatedPersonList)
     })
     .catch(error => next(error))
-})
-
-const PORT = process.env.PORT
-personRouter.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
 })
 
 module.exports = personRouter
